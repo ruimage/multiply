@@ -14,7 +14,7 @@ function App() {
     setFactor2(Math.floor(Math.random()*10));
     setMultiplyTable(()=>{
       const masterArray = new Array(10);
-      masterArray.map(value => new Array(10));
+      masterArray.map(value => value = new Array(10));
     })
   },[])
 
