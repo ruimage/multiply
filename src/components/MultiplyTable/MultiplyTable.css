@@ -1,0 +1,8 @@
+.mult{
+    margin-top: 50px;
+}
+
+.main-column{
+    display: flex;
+    flex-direction: column;
+}

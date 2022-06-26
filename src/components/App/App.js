@@ -1,5 +1,6 @@
 import './App.css';
 import {useEffect, useState} from "react";
+import MultiplyTable from "../MultiplyTable/MultiplyTable";
 
 
 function App() {
@@ -13,8 +14,9 @@ function App() {
     setFactor1(Math.floor(Math.random()*10));
     setFactor2(Math.floor(Math.random()*10));
     setMultiplyTable(()=>{
-      const masterArray = new Array(10);
-      masterArray.map(value => value = new Array(10));
+      const masterArray = Array.from({length: 10}, (_, i) => i + 1);
+      //masterArray.map(value => Array.from({length: 10}, (_, i) => i + 1));
+      return masterArray;
     })
   },[])
 
@@ -38,6 +40,7 @@ function App() {
           <input type="text" className="App-factor" value={result}/>
         </div>
 
+        <MultiplyTable valueArray={multiplyTable}/>
 
       </header>
     </div>
