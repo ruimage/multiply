@@ -11,8 +11,8 @@ function App() {
 
 
   useEffect(() => {
-    setFactor1(Math.floor(Math.random() * 10));
-    setFactor2(Math.floor(Math.random() * 10));
+    setFactor1(Math.floor(Math.random() * 10)+1);
+    setFactor2(Math.floor(Math.random() * 10)+1);
   },[]);
 
   useEffect(() => {
