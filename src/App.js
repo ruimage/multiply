@@ -1,22 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from "react";
 
 function App() {
+
+  const [factor1,setFactor1] = useState(0);
+  const [factor2,setFactor2] = useState(0);
+  const [result,setResult] = useState(0)
+
+  useEffect(()=>{
+    setFactor1(Math.floor(Math.random()*10));
+    setFactor2(Math.floor(Math.random()*10));
+  },[])
+
+  useEffect(()=>{
+    setResult(factor1*factor2)
+  },[factor1, factor2])
+
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-body">
+
+        <div className="App-factors-output">
+          <input type="text" className="App-factor" value={factor1}/>
+          <input type="text" className="App-factor" value={factor2}/>
+        </div>
+
+        <div className="App-factors-output">
+          <input type="text" className="App-factor" value={result}/>
+        </div>
+
+
       </header>
     </div>
   );
