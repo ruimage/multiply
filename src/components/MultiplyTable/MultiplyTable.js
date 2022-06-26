@@ -1,30 +1,30 @@
 import React, {useState} from 'react';
 import './MultiplyTable.css'
-import * as PropTypes from "prop-types";
+import RowDigit from "../RowDigit/RowDigit";
 
-function RowDigit(props) {
-
-
-  return (
-    <div
-      id={'id-' + props.row + '-' + props.col}
-      className={props.isDigitSelected(props.col, props.row) ? props.classString + ' digit-item-selected' : props.classString}
-      data-value={props.dataValue}
-      onClick={props.onClick}
-    >
-        {props.dataValue}
-    </div>);
-}
-
-RowDigit.propTypes = {dataValue: PropTypes.any};
 
 function MultiplyTable() {
 
   const [clickedValues, setClickedValues] = useState([]);
+  const [sumOfValues, setSumOfValues] = useState(0);
 
   const toggleActiveDigits = (col, row) => {
-    if (isDigitSelected(col, row)) return setClickedValues(clickedValues.filter(coord => coord !== `${col}${row}`));
-    return setClickedValues((prev) => [`${col}${row}`, ...prev]);
+    if (isDigitSelected(col, row)) {
+      let newSetValues = [...clickedValues];
+      for (let i = 1; i <= col; i++) {
+        newSetValues = newSetValues.filter(coord => coord !== `${i}${row}`)
+      }
+      setSumOfValues(prevState => prevState - col);
+      return setClickedValues(newSetValues)
+    }
+    
+
+    const newActivatedValues = [];
+    for (let i = 1; i <= col; i++) {
+      newActivatedValues.push(`${i}${row}`)
+    }
+    setSumOfValues(prevState => prevState + col);
+    return setClickedValues((prev) => [...newActivatedValues, ...prev]);
   };
 
   const isDigitSelected = (col, row) => clickedValues.indexOf(`${col}${row}`) !== -1
@@ -45,7 +45,7 @@ function MultiplyTable() {
 
   return (
     <div className="mult">
-
+      <div className="current-result">{sumOfValues}</div>
       {valueArray.map((v1, i1) => {
         return (
           <div className="main-row" data-row={i1 + 1}>
