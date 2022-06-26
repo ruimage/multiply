@@ -3,7 +3,7 @@ import './MultiplyTable.css'
 import RowDigit from "../RowDigit/RowDigit";
 
 
-function MultiplyTable() {
+function MultiplyTable({answer,isCorrect}) {
 
   const [clickedValues, setClickedValues] = useState([]);
   const [sumOfValues, setSumOfValues] = useState(0);
@@ -17,7 +17,6 @@ function MultiplyTable() {
       setSumOfValues(prevState => prevState - col);
       return setClickedValues(newSetValues)
     }
-
 
     const newActivatedValues = [];
     for (let i = 1; i <= col; i++) {
