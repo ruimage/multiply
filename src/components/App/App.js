@@ -8,22 +8,12 @@ function App() {
   const [factor1, setFactor1] = useState(0);
   const [factor2, setFactor2] = useState(0);
   const [result, setResult] = useState(0)
-  const [multiplyTable, setMultiplyTable] = useState([]);
+
 
   useEffect(() => {
     setFactor1(Math.floor(Math.random() * 10));
     setFactor2(Math.floor(Math.random() * 10));
-    setMultiplyTable(() => {
-      return [
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      ];
-    })
-  }, [])
+  },[]);
 
   useEffect(() => {
     setResult(factor1 * factor2)
@@ -43,7 +33,7 @@ function App() {
           <input type="text" className="App-factor" value={result}/>
         </div>
 
-        <MultiplyTable valueArray={multiplyTable}/>
+        <MultiplyTable/>
 
       </header>
     </div>

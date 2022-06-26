@@ -17,8 +17,8 @@
 
 .digit-item{
     margin: 3px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-style: solid;
     border-radius: 50%;
     background-color: white;
@@ -27,8 +27,8 @@
 
 .digit-item-number{
     margin: 3px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-style: solid;
     background-color: green;
     color: white;
