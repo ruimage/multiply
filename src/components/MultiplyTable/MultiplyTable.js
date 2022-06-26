@@ -6,10 +6,13 @@ function RowDigit(props) {
 
 
   return (
-    <div id={'id-' + props.row + '-' + props.col}
-         className={props.isDigitSelected(props.col, props.row) ? props.classString + 'digit-item-selected' : props.classString + 'digit-item'}
-         data-value={props.dataValue}>
-      {props.dataValue}
+    <div
+      id={'id-' + props.row + '-' + props.col}
+      className={props.isDigitSelected(props.col, props.row) ? props.classString + ' digit-item-selected' : props.classString}
+      data-value={props.dataValue}
+      onClick={props.onClick}
+    >
+        {props.dataValue}
     </div>);
 }
 
@@ -48,8 +51,8 @@ function MultiplyTable() {
           <div className="main-row" data-row={i1 + 1}>
             <div className="digit-item-number">{i1 + 1}</div>
             {v1.map((v2) => <RowDigit
-              onClick={toggleActiveDigits}
-              classString=''
+              onClick={() => toggleActiveDigits(v2, i1 + 1)}
+              classString='digit-item '
               dataValue={v2}
               col={v2}
               row={i1 + 1}
