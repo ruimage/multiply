@@ -4,7 +4,20 @@
     flex-direction: row;
     justify-content: space-between;
 
+
 }
+.multi-table{
+    flex-direction: column;
+    border: black 1px solid;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.main-column{
+    display: flex;
+    flex-direction: column;
+}
+
 .current-result{
     width: 25vh;
     height: 20vh;
@@ -14,16 +27,9 @@
     margin-bottom: 50px;
     border: black 1px solid;
     border-radius: 10px;
+    color: gray;
     font-size: 15vh;
-}
 
-.multi-table{
-    flex-direction: column;
-}
-
-.main-column{
-    display: flex;
-    flex-direction: column;
 }
 
 .current-result-correct{
