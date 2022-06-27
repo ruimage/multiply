@@ -9,9 +9,9 @@ function MultiplyTable({answer}) {
   const [sumOfValues, setSumOfValues] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  useEffect(()=>{
-    (Number(sumOfValues) === Number(answer) && Number(sumOfValues)!==0 )? setIsCorrect(true):setIsCorrect(false);
-  },[sumOfValues,answer]);
+  useEffect(() => {
+    (Number(sumOfValues) === Number(answer) && Number(sumOfValues) !== 0) ? setIsCorrect(true) : setIsCorrect(false);
+  }, [sumOfValues, answer]);
 
   const toggleActiveDigits = (col, row) => {
     if (isDigitSelected(col, row)) {
@@ -34,7 +34,6 @@ function MultiplyTable({answer}) {
   const isDigitSelected = (col, row) => clickedValues.indexOf(`${col}${row}`) !== -1
 
 
-
   const valueArray = [
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -50,25 +49,26 @@ function MultiplyTable({answer}) {
 
   return (
     <div className="mult">
-      <div className={isCorrect ? "current-result-correct":"current-result"}>{sumOfValues}</div>
-      {valueArray.map((v1, i1) => {
-        return (
-          <div className="main-row" data-row={i1 + 1}>
-            <div className="digit-item-number">{i1 + 1}</div>
-            {v1.map((v2) => <RowDigit
-              onClick={() => toggleActiveDigits(v2, i1 + 1)}
-              classString='digit-item '
-              dataValue={v2}
-              col={v2}
-              row={i1 + 1}
-              isDigitSelected={isDigitSelected}
+      <div className="multi-table">
+        {valueArray.map((v1, i1) => {
+          return (
+            <div className="main-row" data-row={i1 + 1}>
+              <div className="digit-item-number">{i1 + 1}</div>
+              {v1.map((v2) => <RowDigit
+                onClick={() => toggleActiveDigits(v2, i1 + 1)}
+                classString='digit-item '
+                dataValue={v2}
+                col={v2}
+                row={i1 + 1}
+                isDigitSelected={isDigitSelected}
 
-            />)}
-          </div>)
-      })
-      }
+              />)}
+            </div>)
 
-
+        })
+        }
+      </div>
+      <div className={isCorrect ? "current-result current-result-correct" : "current-result"}>{sumOfValues}</div>
     </div>
   );
 }
