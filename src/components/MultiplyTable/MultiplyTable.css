@@ -8,7 +8,7 @@
 }
 .multi-table{
     flex-direction: column;
-    border: black 1px solid;
+    border: black 2px solid;
     padding: 10px;
     border-radius: 10px;
 }
@@ -25,7 +25,7 @@
     padding-top: 5vh;
     margin-top: 50px;
     margin-bottom: 50px;
-    border: black 1px solid;
+    border: black 2px solid;
     border-radius: 10px;
     color: gray;
     font-size: 15vh;
