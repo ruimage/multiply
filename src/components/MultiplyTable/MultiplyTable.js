@@ -3,14 +3,22 @@ import './MultiplyTable.css'
 import RowDigit from "../RowDigit/RowDigit";
 
 
-function MultiplyTable({answer}) {
+function MultiplyTable({answer, startNewRun}) {
 
   const [clickedValues, setClickedValues] = useState([]);
   const [sumOfValues, setSumOfValues] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
 
   useEffect(() => {
-    (Number(sumOfValues) === Number(answer) && Number(sumOfValues) !== 0) ? setIsCorrect(true) : setIsCorrect(false);
+    if (Number(sumOfValues) === Number(answer) && Number(sumOfValues) !== 0) {
+      setIsCorrect(true);
+      setTimeout( startNewRun , 1000)
+      setTimeout(()=>{setClickedValues([])},1000);
+    } else {
+      setIsCorrect(false)
+    }
+    
+
   }, [sumOfValues, answer]);
 
   const toggleActiveDigits = (col, row) => {
