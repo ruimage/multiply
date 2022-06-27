@@ -13,11 +13,15 @@ function MultiplyTable({answer, startNewRun}) {
     if (Number(sumOfValues) === Number(answer) && Number(sumOfValues) !== 0) {
       setIsCorrect(true);
       setTimeout( startNewRun , 1000)
-      setTimeout(()=>{setClickedValues([])},1000);
+      setTimeout(()=>{
+        setClickedValues([]);
+        setSumOfValues(0);
+        setIsCorrect(false);
+      },1000);
     } else {
       setIsCorrect(false)
     }
-    
+
 
   }, [sumOfValues, answer]);
 
