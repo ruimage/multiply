@@ -31,12 +31,8 @@ function App() {
     <div className="App">
       <header className="App-body">
         <div className="App-factors-output">
-          <p>{factor1} X {factor2}</p>
+          {factor1} X {factor2}
         </div>
-        <div className="App-factors-output">
-          <input type="text"  value={result}/>
-        </div>
-
         <MultiplyTable answer={answer}/>
 
       </header>
