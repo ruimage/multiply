@@ -12,12 +12,12 @@ function MultiplyTable({answer, startNewRun}) {
   useEffect(() => {
     if (Number(sumOfValues) === Number(answer) && Number(sumOfValues) !== 0) {
       setIsCorrect(true);
-      setTimeout( startNewRun , 1000)
       setTimeout(()=>{
         setClickedValues([]);
         setSumOfValues(0);
         setIsCorrect(false);
-      },1000);
+        startNewRun();
+      },2000);
     } else {
       setIsCorrect(false)
     }
