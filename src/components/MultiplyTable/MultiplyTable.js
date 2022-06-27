@@ -10,7 +10,7 @@ function MultiplyTable({answer}) {
   const [isCorrect, setIsCorrect] = useState(false);
 
   useEffect(()=>{
-    (Number(sumOfValues) === Number(answer))? setIsCorrect(true):setIsCorrect(false);
+    (Number(sumOfValues) === Number(answer) && Number(sumOfValues)!==0 )? setIsCorrect(true):setIsCorrect(false);
   },[sumOfValues,answer]);
 
   const toggleActiveDigits = (col, row) => {
