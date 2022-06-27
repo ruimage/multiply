@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './MultiplyTable.css'
 import RowDigit from "../RowDigit/RowDigit";
 
 
-function MultiplyTable({answer,isCorrect}) {
+function MultiplyTable({answer}) {
 
   const [clickedValues, setClickedValues] = useState([]);
   const [sumOfValues, setSumOfValues] = useState(0);
+  const [isCorrect, setIsCorrect] = useState(false);
+
+  useEffect(()=>{
+    (Number(sumOfValues) === Number(answer))? setIsCorrect(true):setIsCorrect(false);
+  },[sumOfValues,answer]);
 
   const toggleActiveDigits = (col, row) => {
     if (isDigitSelected(col, row)) {
@@ -28,6 +33,8 @@ function MultiplyTable({answer,isCorrect}) {
 
   const isDigitSelected = (col, row) => clickedValues.indexOf(`${col}${row}`) !== -1
 
+
+
   const valueArray = [
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -41,10 +48,9 @@ function MultiplyTable({answer,isCorrect}) {
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   ];
 
-
   return (
     <div className="mult">
-      <div className="current-result">{sumOfValues}</div>
+      <div className={isCorrect ? "current-result-correct":"current-result"}>{sumOfValues}</div>
       {valueArray.map((v1, i1) => {
         return (
           <div className="main-row" data-row={i1 + 1}>

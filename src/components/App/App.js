@@ -9,7 +9,7 @@ function App() {
   const [factor2, setFactor2] = useState(0);
   const [result, setResult] = useState(0);
   const [answer, setAnswer] = useState(0);
-  const [isCorrect, setIsCorrect] = useState(false);
+
 
 
 
@@ -22,6 +22,10 @@ function App() {
     setResult(factor1 * factor2)
   }, [factor1, factor2])
 
+  useEffect(() => {
+    setAnswer(result)
+  }, [result])
+
 
   return (
     <div className="App">
@@ -30,10 +34,10 @@ function App() {
           <p>{factor1} X {factor2}</p>
         </div>
         <div className="App-factors-output">
-          <input type="text" className={isCorrect ? "App-factor":"App-factor-correct"} value={result}/>
+          <input type="text"  value={result}/>
         </div>
 
-        <MultiplyTable answer={answer} isCorrect={false}/>
+        <MultiplyTable answer={answer}/>
 
       </header>
     </div>
